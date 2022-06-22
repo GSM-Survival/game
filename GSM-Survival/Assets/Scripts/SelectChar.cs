@@ -15,6 +15,11 @@ public class SelectChar : MonoBehaviour
         else OnDeSelect();
     }
 
+    private void Update()
+    {
+
+    }
+
     private void OnMouseUpAsButton()
     {
         DataMgr.instance.currentCharacter = character;
@@ -23,12 +28,6 @@ public class SelectChar : MonoBehaviour
         {
             if (chars[i] != this) chars[i].OnDeSelect();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     void OnDeSelect()
     {

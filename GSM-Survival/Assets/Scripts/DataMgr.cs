@@ -12,7 +12,7 @@ public class DataMgr : MonoBehaviour
     public static DataMgr instance;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         if (instance == null) instance = this;
         else if (instance != null) return;
