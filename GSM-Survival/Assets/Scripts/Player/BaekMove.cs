@@ -5,37 +5,34 @@ using UnityEngine;
 public class BaekMove : MonoBehaviour
 {
     Animator anim;
+    SpriteRenderer sr;
     public GameObject attack;
-    float time = 0.0f;
+    float time = 4.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetButton("Horizontal"))
         {
-            transform.Translate(Vector2.up * 0.1f);
+            sr.flipX = Input.GetAxisRaw("Horizontal") == -1;
+            if (Input.GetAxis("Horizontal") > 0)
+                transform.Translate(Vector2.right * 0.1f);
+            else transform.Translate(-Vector2.right * 0.1f);
             anim.SetBool("isMove", true);
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetButton("Vertical"))
         {
-            transform.Translate(-Vector2.up * 0.1f);
-            anim.SetBool("isMove", true);
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(-Vector2.right * 0.1f);
-            anim.SetBool("isMove", true);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(Vector2.right * 0.1f);
+            if (Input.GetAxis("Vertical") > 0)
+                transform.Translate(Vector2.up * 0.1f);
+            else transform.Translate(-Vector2.up * 0.1f);
             anim.SetBool("isMove", true);
         }
         else if (Input.GetKeyDown(KeyCode.Space))

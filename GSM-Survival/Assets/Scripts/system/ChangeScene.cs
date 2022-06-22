@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class BaekAttack : MonoBehaviour
+public class ChangeScene : MonoBehaviour
 {
-    float time = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,11 +14,11 @@ public class BaekAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        transform.localScale += new Vector3(0.03f, 0.03f, 0.0f);
-        if(time >= 0.3)
-        {
-            Destroy(gameObject);
-        }
+        
+    }
+
+    public void change()
+    {
+        SceneManager.LoadScene("Game");
     }
 }
