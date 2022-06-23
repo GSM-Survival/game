@@ -5,7 +5,9 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     GameObject player;
-    public int hp = 50;
+    public int hp = 0;
+    public int attack = 0;
+    public float speed = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,7 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player != null) transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 0.03f);
+        if(player != null) transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed);
     }
 
     private void initPlayer()
@@ -36,8 +38,17 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    public void Die()
+    private void Die()
     {
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Move player = collision.gameObject.GetComponent<Move>();
+            player.OnDamaged(attack);
+        }
     }
 }
