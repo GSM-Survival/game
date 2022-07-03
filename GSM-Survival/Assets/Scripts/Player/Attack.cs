@@ -22,7 +22,7 @@ public class Attack : MonoBehaviour
     {
         time += Time.deltaTime;
         if(attackType == "ball" && enemy != null) transform.position = Vector2.MoveTowards(transform.position, enemy.transform.position, 0.1f);
-        else if (attackType == "earthquake") transform.localScale += new Vector3(0.03f, 0.03f, 0.0f);
+        else if (attackType == "earthquake") transform.localScale += new Vector3(0.01f, 0.01f, 0.0f);
         if (time >= skillTime)
         {
             Destroy(gameObject);

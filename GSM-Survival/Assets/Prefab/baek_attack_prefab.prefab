@@ -115,5 +115,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 20
-  skillTime: 3
+  skillTime: 2
   attackType: earthquake

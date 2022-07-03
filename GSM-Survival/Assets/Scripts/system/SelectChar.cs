@@ -7,11 +7,13 @@ public class SelectChar : MonoBehaviour
     public Character character;
     SpriteRenderer sr;
     public SelectChar[] chars;
+    private AudioSource playerAudio;
     // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        if (DataMgr.instance.currentCharacter == character) OnSelect();
+        playerAudio = GetComponent<AudioSource>();
+        if (DataMgr.instance.currentCharacter == character) FirstSelect();
         else OnDeSelect();
     }
 
@@ -37,5 +39,17 @@ public class SelectChar : MonoBehaviour
     void OnSelect()
     {
         sr.color = new Color(1f, 1f, 1f);
+        playerAudio.Play();
+        Invoke("AudioStop", 0.8f);
+    }
+
+    void FirstSelect()
+    {
+        sr.color = new Color(1f, 1f, 1f);
+    }
+
+    void AudioStop()
+    {
+        playerAudio.Stop();
     }
 }

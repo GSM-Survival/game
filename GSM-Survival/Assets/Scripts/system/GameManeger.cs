@@ -23,14 +23,17 @@ public class GameManeger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isGameover)
+        if(timeText != null)
         {
-            surviveTime -= Time.deltaTime;
-            timeText.text = "Time: " + (int)surviveTime;
-        }
-        if(surviveTime <= 0)
-        {
-            clearText.SetActive(true);
+            if (!isGameover)
+            {
+                surviveTime -= Time.deltaTime;
+                timeText.text = "Time: " + (int)surviveTime;
+            }
+            if (surviveTime <= 0)
+            {
+                clearText.SetActive(true);
+            }
         }
         if (Input.GetButtonDown("Cancel"))
         {
