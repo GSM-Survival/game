@@ -8,9 +8,12 @@ public class EnemyMove : MonoBehaviour
     public int hp = 0;
     public int attack = 0;
     public float speed = 0.0f;
+
+    private AudioSource playerAudio;
     // Start is called before the first frame update
     void Start()
     {
+        playerAudio = GetComponent<AudioSource>();
         Invoke("initPlayer", 0.1f);
     }
 
@@ -27,7 +30,9 @@ public class EnemyMove : MonoBehaviour
 
     public void OnDameged(int attack, string attackType)
     {
+
         hp -= attack;
+        playerAudio.Play();
         if(attackType == "earthquake")
         {
 
